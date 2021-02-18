@@ -1,5 +1,5 @@
 # change application name here (executable output name)
-TARGET=build/threadExample
+TARGET=build/cpuscheduling
 
 # compiler
 CC=gcc
@@ -18,15 +18,15 @@ CCFLAGS=$(DEBUG) $(OPT) $(WARN) $(PTHREAD) -pipe
 LD=gcc
 LDFLAGS=$(PTHREAD) $(GTKLIB) -export-dynamic
 
-OBJS=    main.o
+OBJS=    objs/main.o
 
 all: $(OBJS)
 	$(LD) -o $(TARGET) $(OBJS) $(LDFLAGS)
     
-main.o: src/main.c
-	$(CC) -c $(CCFLAGS) src/main.c -o main.o
+main.o: src/cpuscheduling.c
+	$(CC) -c $(CCFLAGS) src/cpuscheduling.c -o objs/main.o
 
 run:
-	./build/threadExample
+	./build/cpuscheduling
 clean:
 	rm -f *.o $(TARGET)
